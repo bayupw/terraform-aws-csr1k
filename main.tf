@@ -29,7 +29,7 @@ data "template_file" "running_config" {
 # Create a Security Group for Cisco CSR Gi1
 resource "aws_security_group" "gi1_sg" {
   vpc_id = var.vpc_id
-  name   = "CSR GigabitEthernet1 Security Group"
+  name   = "CSR GigabitEthernet1 Security Group for ${var.csr_hostname}"
 
   dynamic "ingress" {
     for_each = local.ingress_ports
@@ -62,7 +62,7 @@ resource "aws_security_group" "gi1_sg" {
 # Create a Security Group for Cisco CSR Gi2
 resource "aws_security_group" "gi2_sg" {
   vpc_id = var.vpc_id
-  name   = "CSR GigabitEthernet2 Security Group"
+  name   = "CSR GigabitEthernet2 Security Group for ${var.csr_hostname}"
 
   dynamic "ingress" {
     for_each = local.ingress_ports
